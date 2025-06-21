@@ -1,0 +1,20 @@
+spring.application.name=task-manager-backend-postgresql
+
+#server port change
+server.port=8282
+
+#Database Connection
+spring.datasource.url=jdbc:postgresql://localhost:5432/your_database_name
+spring.datasource.username=your_pg_user
+spring.datasource.password=your_pg_password
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+#hibernate properties
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+#spring.jpa.show-sql=true
+#spring.jpa.properties.hibernate.format_sql=true
+
+# Dummy JWT Secret (needed by Spring Security, even if we're not fully using JWT for auth)
+jwt.secret=ThisIsASuperSecretKeyForYourDummyJWTTestingAndShouldBeVeryLongAndComplexInProduction
+
