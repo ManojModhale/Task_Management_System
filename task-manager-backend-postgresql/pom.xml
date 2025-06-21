@@ -11,7 +11,7 @@
 	<groupId>com.taskmanager</groupId>
 	<artifactId>task-manager-backend-postgresql</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>task-manager-backend-postgresql</name>
 	<description>Spring Boot application for task adding, removing, updating.</description>
 	<url/>
