@@ -1,0 +1,164 @@
+/* src/styles/Modal.css */
+/* Enhanced styles for React-Bootstrap modals,
+   appropriate for a TasksDashboard context */
+
+/* Modal Overlay: The dimmed background behind the modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay for better focus */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050; /* Bootstrap's default modal z-index */
+    opacity: 0; /* Start hidden for transition */
+    transition: opacity 0.3s ease-in-out; /* Smooth fade-in */
+}
+
+/* When the modal is shown, make overlay visible */
+.modal.show .modal-overlay {
+    opacity: 1;
+}
+
+/* Modal Content: The actual modal box */
+.modal-content {
+    background: #f8f9fa; /* Changed from white to a light grey for a softer look */
+    padding: 25px; /* Slightly increased padding for content */
+    border-radius: 10px; /* More pronounced rounded corners */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Deeper, softer shadow */
+    max-width: 550px; /* Slightly wider max-width for more content space */
+    width: 90%; /* Responsive width */
+    position: relative;
+    z-index: 1051; /* Higher than overlay */
+    transform: translateY(-20px); /* Start slightly above for slide-down effect */
+    opacity: 0; /* Start hidden for transition */
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Smooth slide and fade */
+}
+
+/* When the modal is shown, bring content into view */
+.modal.show .modal-dialog .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Modal Header: Title section */
+.modal-header {
+    /* Background color matching dashboard theme (e.g., from MgExpenseMg.css) */
+    background-color: #1976d2;
+    color: white;
+    border-bottom: none; /* Remove default Bootstrap border */
+    padding: 1.2rem 1.8rem; /* Adjusted padding for a more generous header */
+    border-top-left-radius: 9px; /* Match content border-radius minus 1px */
+    border-top-right-radius: 9px;
+    position: sticky; /* Keep header visible if body scrolls */
+    top: 0;
+    z-index: 10; /* Ensure it's above scrolling content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for header */
+}
+
+.modal-title {
+    font-weight: 700; /* Bolder title font */
+    font-size: 1.5rem; /* Larger title font size */
+    margin-bottom: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Slight text shadow for depth */
+}
+
+/* Close button styling in header */
+.modal-header .btn-close {
+    filter: invert(1); /* Make default close icon white for dark header */
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.modal-header .btn-close:hover {
+    opacity: 1;
+}
+
+/* Modal Body: Form content area */
+.modal-body {
+    padding: 1.8rem; /* Consistent padding */
+    max-height: 70vh; /* Limit height to enable scrolling for long forms */
+    overflow-y: auto; /* Enable vertical scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Modal Footer: Buttons area */
+.modal-footer {
+    border-top: none; /* Remove default Bootstrap border */
+    padding: 1rem 1.8rem 1.8rem; /* Adjusted padding, more at bottom */
+    justify-content: flex-end;
+    gap: 12px; /* Slightly increased space between buttons */
+    background-color: #f8f9fa; /* Light background for footer */
+    border-bottom-left-radius: 9px; /* Match content border-radius */
+    border-bottom-right-radius: 9px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow for footer */
+}
+
+/* Form control specific styles for consistency with Bootstrap */
+.form-control, .form-select {
+    border-radius: 0.35rem; /* Slightly more rounded corners */
+    border: 1px solid #ced4da;
+    padding: 0.5rem 0.8rem; /* Slightly more vertical padding */
+    width: 100%;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #80bdff; /* Bootstrap focus color */
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25); /* Bootstrap focus shadow */
+    outline: 0;
+}
+
+/* Styles for labels */
+.form-label {
+    font-weight: 500; /* Slightly bolder labels */
+    margin-bottom: 0.3rem; /* Reduce space below label */
+    color: #343a40; /* Darker text for labels */
+}
+
+/* Button styles (specific to primary/secondary variants if needed) */
+.btn-primary {
+    background-color: #1976d2; /* Consistent primary button color */
+    border-color: #1976d2;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+    background-color: #1565c0; /* Slightly darker on hover */
+    border-color: #1565c0;
+    transform: translateY(-1px); /* Slight lift on hover */
+}
+
+.btn-secondary {
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-1px); /* Slight lift on hover */
+}
+
+/* Responsive adjustments for various screen sizes */
+@media (min-width: 768px) { /* Medium devices (tablets) */
+    .modal-content {
+        max-width: 600px; /* Allow slightly wider on larger screens */
+    }
+}
+
+@media (max-width: 576px) { /* Small devices (phones) */
+    .modal-content {
+        width: 95%; /* Take up more width on small screens */
+        margin: 1rem auto; /* Center with margin */
+        padding: 15px; /* Reduced padding on small screens */
+    }
+
+    .modal-header, .modal-body, .modal-footer {
+        padding: 1rem; /* Adjust padding for all sections */
+    }
+
+    .modal-title {
+        font-size: 1.3rem; /* Smaller title on small screens */
+    }
+}

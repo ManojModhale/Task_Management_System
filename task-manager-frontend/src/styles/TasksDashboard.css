@@ -1,0 +1,416 @@
+/* src/styles/TasksDashboard.css */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --info-color: #17a2b8;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --light-blue: #e9f0f7;
+}
+
+.dashboard-page-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.dashboard-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0; /* Adjusted padding */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ensure header spans full width */
+}
+
+.dashboard-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; /* Add horizontal padding for content */
+    max-width: 1200px; /* Max width for content to keep it centered */
+    margin: 0 auto; /* Center the content */
+}
+
+.dashboard-header h1 {
+    font-size: 2rem; /* Adjusted font size for responsiveness */
+    margin: 0;
+    font-weight: 600;
+}
+
+.logout-button {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 10px 20px; /* Adjusted padding */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem; /* Adjusted font size */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.logout-button:hover {
+    background-color: #c82333; /* Darker red on hover */
+    transform: translateY(-1px); /* Subtle lift effect */
+}
+
+.tasks-dashboard-container {
+    flex-grow: 1; /* Allows container to take available space */
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-color);
+}
+
+/* New section for Add Task Button and Filters */
+.tasks-controls-section {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    justify-content: space-between; /* Space out add button and filters */
+    align-items: center;
+    gap: 20px; /* Spacing between the add button and filter group */
+    padding: 20px;
+    margin-bottom: 25px; /* Space below this section */
+    background-color: #ffffff; /* White background for this section */
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.add-new-task-btn {
+    padding: 10px 20px;
+    font-size: 1.05em;
+    border-radius: 25px; /* Pill-shaped button */
+    transition: all 0.2s ease-in-out;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap; /* Prevent button text from wrapping */
+    flex-shrink: 0; /* Prevent button from shrinking on smaller screens */
+}
+
+.add-new-task-btn:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: translateY(-2px); /* Lift effect on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Filter Group within the controls section */
+.filter-group {
+    display: flex;
+    flex-wrap: wrap; /* Allows filter inputs to wrap */
+    gap: 15px; /* Spacing between individual filter components */
+    align-items: center;
+    flex-grow: 1; /* Allow the filter group to take available space */
+    justify-content: flex-end; /* Align filters to the right initially */
+}
+
+.filter-input,
+.filter-date-input {
+    flex-grow: 1; /* Allow inputs to grow */
+    min-width: 180px; /* Minimum width for inputs */
+    max-width: 250px; /* Max width to prevent overly long inputs */
+    height: 40px; /* Consistent height for inputs */
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 8px 12px;
+    font-size: 1rem;
+    color: var(--dark-color);
+}
+
+.filter-input:focus,
+.filter-date-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.date-label {
+    margin-bottom: 0;
+    white-space: nowrap;
+    font-weight: bold;
+    color: #555;
+    flex-shrink: 0; /* Prevent label from shrinking */
+}
+
+.clear-filters-btn {
+    padding: 8px 16px;
+    font-size: 0.95em;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.clear-filters-btn:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+    transform: translateY(-1px);
+}
+
+/* Tabs Styling (from previous improvement) */
+.custom-tabs .nav-link {
+    color: #6c757d;
+    font-weight: 500;
+    padding: 12px 20px;
+    border: none !important;
+    border-bottom: 3px solid transparent !important;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: transparent;
+    margin-right: 5px;
+    border-radius: 5px 5px 0 0;
+}
+
+.custom-tabs .nav-link:hover {
+    color: #0056b3;
+    border-bottom-color: #a8d6ff !important;
+    background-color: #f8f9fa;
+}
+
+.custom-tabs .nav-link.active {
+    color: #007bff;
+    font-weight: 600;
+    border-bottom: 3px solid #007bff !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 1;
+}
+
+.custom-tabs .nav-link:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Re-added focus box-shadow for accessibility */
+}
+
+.custom-tabs {
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Table Styling */
+.table-responsive {
+    overflow-x: auto; /* Ensures table is scrollable on small screens */
+}
+
+.tasks-table {
+    margin-top: 1.5rem;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.01);
+    border-radius: 8px;
+    overflow: hidden; /* Ensures rounded corners apply to table content */
+    width: 100%; /* Ensure table takes full width */
+    min-width: 700px; /* Minimum width for the table to prevent squishing */
+}
+
+.tasks-table thead th {
+    background-color: #e2e6ea;
+    border-bottom: 2px solid #ced4da;
+    color: #343a40;
+    font-weight: bold;
+    padding: 12px 15px;
+    text-align: left;
+    vertical-align: middle;
+    white-space: nowrap; /* Prevent header text from wrapping */
+}
+
+.tasks-table tbody tr:hover {
+    background-color: #eaf2f8;
+}
+
+.tasks-table td, .tasks-table th {
+    vertical-align: middle;
+    padding: 10px 15px;
+}
+
+/* Status Badges */
+.task-status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.85em;
+    display: inline-block;
+    text-transform: uppercase;
+    white-space: nowrap; /* Prevent status text from wrapping */
+}
+
+.status-pending {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.status-completed {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.status-overdue {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Action Buttons in Table */
+.task-actions-cell {
+    white-space: nowrap;
+    min-width: 150px;
+}
+
+.action-btn {
+    margin-right: 8px;
+    padding: 6px 12px;
+    font-size: 0.85em;
+    border-radius: 5px;
+}
+
+.edit-btn {
+    background-color: var(--info-color); /* Changed to info color for edit */
+    border-color: var(--info-color);
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #138496; /* Darker info on hover */
+    border-color: #117a8b;
+    color: white;
+}
+
+.delete-btn {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+/* Messages */
+.no-tasks-message, .no-expenses-message {
+    font-size: 18px;
+    color: #555;
+    text-align: center;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-top: 20px;
+}
+
+/* --- Responsive Adjustments --- */
+
+/* For screens smaller than 992px (typical for tablets and smaller desktops) */
+@media (max-width: 991.98px) {
+    .dashboard-header-content {
+        flex-direction: column; /* Stack header items */
+        align-items: flex-start; /* Align welcome message to left */
+        gap: 10px; /* Space between title and logout button */
+    }
+
+    .dashboard-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .logout-button {
+        align-self: flex-end; /* Push logout button to the right */
+    }
+
+    .tasks-dashboard-container {
+        padding: 15px; /* Slightly less padding */
+    }
+
+    .tasks-controls-section {
+        flex-direction: column; /* Stack add button and filters */
+        align-items: stretch; /* Stretch items to fill width */
+        gap: 15px; /* Smaller gap when stacked */
+        padding: 15px;
+    }
+
+    .add-new-task-btn {
+        width: 100%; /* Full width for the add button */
+        justify-content: center; /* Center text in button */
+        font-size: 1em;
+    }
+
+    .filter-group {
+        flex-direction: column; /* Stack filter inputs */
+        align-items: stretch; /* Stretch inputs to fill width */
+        width: 100%; /* Full width for the filter group */
+        gap: 10px; /* Smaller gap between stacked filters */
+    }
+
+    .filter-input,
+    .filter-date-input {
+        max-width: 100%; /* Allow inputs to take full width */
+    }
+
+    .date-label {
+        width: 100%; /* Ensure label is on its own line */
+    }
+
+    .clear-filters-btn {
+        width: 100%; /* Full width for clear filters button */
+    }
+}
+
+/* For screens smaller than 768px (typical for mobile devices) */
+@media (max-width: 767.98px) {
+    .dashboard-header h1 {
+        font-size: 1.4rem;
+    }
+
+    .logout-button {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+
+    .tasks-dashboard-container {
+        padding: 10px;
+    }
+
+    .tasks-table {
+        font-size: 0.9em; /* Smaller font size for table content */
+    }
+
+    .tasks-table th,
+    .tasks-table td {
+        padding: 8px 10px; /* Smaller padding in table cells */
+    }
+
+    .action-btn {
+        padding: 5px 10px;
+        font-size: 0.75em;
+        margin-right: 5px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 575.98px) {
+    .dashboard-header-content {
+        padding: 0 10px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 1.2rem;
+    }
+
+    .tasks-controls-section {
+        padding: 10px;
+    }
+
+    .custom-tabs .nav-link {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+    }
+}

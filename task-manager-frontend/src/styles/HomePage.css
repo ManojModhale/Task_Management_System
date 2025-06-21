@@ -1,0 +1,544 @@
+/* src/styles/HomePage.css */
+html {
+    scroll-behavior: smooth;
+}
+/* General Body and Container Styles */
+.task-landing-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A clean, modern sans-serif font */
+    color: #343a40; /* Dark grey for general text */
+    background-color: #f8f9fa; /* Light background similar to your dashboard */
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Reusable Section Title Styles */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1976d2; /* Main blue for titles */
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #1976d2;
+    border-radius: 2px;
+}
+
+/* Navbar Styles */
+.task-navbar {
+    background-color: #343a40; /* Dark grey for navbar */
+    padding: 15px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+    z-index: 1000;
+}
+
+.navbar-brand-custom {
+    color: #ffffff !important; /* White text for brand */
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.brand-icon {
+    font-size: 2rem;
+    color: #ffeb3b; /* Bright yellow for icon */
+}
+
+.nav-link-custom {
+    color: #ffffff !important;
+    font-weight: 500;
+    margin-right: 15px;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.nav-link-custom:hover {
+    color: #ffeb3b !important; /* Yellow on hover */
+    border-bottom: 2px solid #ffeb3b;
+}
+
+.signup-button {
+    background-color: #ffeb3b !important; /* Yellow button */
+    border-color: #ffeb3b !important;
+    color: #1976d2 !important; /* Dark blue text */
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 25px; /* Pill-shaped button */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.signup-button:hover {
+    background-color: #ffe000 !important;
+    transform: translateY(-2px);
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(to right, rgba(25, 118, 210, 0.9), rgba(10, 77, 158, 0.9)), url('https://via.placeholder.com/1500x800/1976d2/ffffff?text=Task+Management+Background') no-repeat center center / cover; /* Example background image */
+    color: white;
+    min-height: 85vh; /* Increased height to accommodate About Us info */
+    padding: 100px 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    display: flex; /* Use flex to vertically center content */
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+}
+
+/* About Us Info in Hero Section */
+.about-us-info {
+    background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white background */
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px); /* Optional: slight blur effect */
+}
+
+.about-us-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffeb3b; /* Yellow for the title */
+    margin-bottom: 15px;
+}
+
+.about-us-text {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #f0f8ff; /* Slightly off-white text */
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-cta-button {
+    background-color: #ffeb3b !important;
+    border-color: #ffeb3b !important;
+    color: #1976d2 !important;
+    font-weight: 700;
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hero-cta-button:hover {
+    background-color: #ffe000 !important;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hero-learn-more-button {
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+    font-weight: 600;
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.hero-learn-more-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+/* Features Section */
+.features-section {
+    background-color: #ffffff; /* White background for features */
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.feature-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow for cards */
+    padding: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; /* Ensure cards are same height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.feature-icon {
+    font-size: 3.5rem;
+    color: #1976d2; /* Feature icon color */
+    margin-bottom: 20px;
+}
+
+.feature-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 15px;
+}
+
+.feature-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* How It Works Section */
+.how-it-works-section {
+    background-color: #e9f0f7; /* Light blue background for this section */
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.step-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    background-color: #ffffff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.step-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.step-icon-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #1976d2;
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.step-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+/* Quote/Testimonial Section */
+.quote-section {
+    background-color: #1976d2; /* Primary blue background for a strong statement */
+    color: white;
+    padding: 80px 0;
+}
+
+.quote-icon {
+    font-size: 4rem;
+    color: #ffeb3b; /* Yellow icon */
+}
+
+.quote-text {
+    font-size: 1.6rem;
+    font-style: italic;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.quote-author {
+    font-size: 1.1rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* Contact Us Section (Renamed from cta-section) */
+.contact-us-section {
+    background-color: #ffffff;
+    padding: 80px 0;
+    border-top: 1px solid #e0e0e0; /* Subtle border */
+}
+
+.contact-intro-text {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #555;
+    font-size: 1.15rem;
+}
+
+.contact-details {
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+
+.contact-detail-icon {
+    font-size: 2.5rem;
+    color: #1976d2;
+    margin-bottom: 10px;
+}
+
+.contact-detail-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #343a40;
+}
+
+.contact-detail-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+.contact-form-container {
+    background-color: #f8f9fa; /* Light background for the form area */
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form-container .form-label {
+    font-weight: 500;
+    color: #343a40;
+}
+
+.contact-form-container .form-control,
+.contact-form-container .form-control:focus {
+    border-color: #ced4da;
+    box-shadow: none;
+}
+
+.contact-form-container .form-control:focus {
+    border-color: #1976d2;
+    box-shadow: 0 0 0 0.25rem rgba(25, 118, 210, 0.25);
+}
+
+.send-message-button {
+    background-color: #1976d2 !important;
+    border-color: #1976d2 !important;
+    color: white !important;
+    font-weight: 700;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.send-message-button:hover {
+    background-color: #1565c0 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Footer Section */
+.task-footer {
+    background-color: #343a40; /* Dark grey footer */
+    color: #f8f9fa; /* Light text for contrast */
+    padding: 40px 0;
+    font-size: 0.95rem;
+}
+
+.footer-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffeb3b; /* Yellow for brand in footer */
+}
+
+.footer-link {
+    color: #f8f9fa !important;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #1976d2 !important; /* Blue on hover */
+}
+
+
+/* --- Responsive Adjustments (Media Queries) --- */
+
+/* Small devices (phones, 576px and below) */
+@media (max-width: 576px) {
+    .hero-section {
+        min-height: auto; /* Allow height to adjust */
+        padding: 60px 0;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .about-us-info {
+        padding: 20px;
+        margin: 20px 0 30px;
+    }
+
+    .about-us-title {
+        font-size: 1.6rem;
+    }
+
+    .about-us-text {
+        font-size: 1rem;
+    }
+
+    .hero-cta-button,
+    .hero-learn-more-button {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+        margin-bottom: 15px !important; /* Ensure spacing between buttons */
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .feature-card, .step-card {
+        padding: 20px;
+    }
+
+    .feature-icon {
+        font-size: 3rem;
+    }
+
+    .feature-title {
+        font-size: 1.3rem;
+    }
+
+    .step-icon-container {
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+    }
+
+    .step-title {
+        font-size: 1.2rem;
+    }
+
+    .quote-icon {
+        font-size: 3rem;
+    }
+
+    .quote-text {
+        font-size: 1.2rem;
+    }
+
+    .contact-intro-text {
+        font-size: 1rem;
+    }
+
+    .contact-details .col-md-4 {
+        margin-bottom: 30px; /* Add space between contact detail columns */
+    }
+    .contact-details .col-md-4:last-child {
+        margin-bottom: 0;
+    }
+
+    .contact-detail-icon {
+        font-size: 2rem;
+    }
+
+    .contact-detail-title {
+        font-size: 1.1rem;
+    }
+
+    .contact-form-container {
+        padding: 25px;
+    }
+
+    .send-message-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .footer-brand {
+        font-size: 1.3rem;
+    }
+
+    .footer-link {
+        margin-left: 10px; /* Closer links on small screens */
+    }
+}
+
+/* Medium devices (tablets, 768px and below) */
+@media (max-width: 768px) {
+    .task-navbar .navbar-nav {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .nav-link-custom, .signup-button {
+        margin-right: 0 !important;
+        margin-bottom: 10px;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .contact-details .col-md-4 {
+        margin-bottom: 20px; /* Adjust spacing for tablets */
+    }
+}
+
+/* Large devices (desktops, 992px and below) */
+@media (max-width: 992px) {
+    .hero-section {
+        min-height: 75vh; /* Adjust height for slightly smaller screens */
+    }
+}
+
+/* Extra large devices (1200px and below) */
+@media (max-width: 1200px) {
+    .about-us-info {
+        padding: 25px;
+    }
+    .about-us-title {
+        font-size: 1.8rem;
+    }
+    .about-us-text {
+        font-size: 1.1rem;
+    }
+}
