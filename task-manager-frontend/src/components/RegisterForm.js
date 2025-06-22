@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'; // Import SweetAlert
 import taskManagerApi from '../api/taskManagerApi'; // Assuming this path is correct
 import '../styles/RegisterForm.css'; // New CSS file for this component
 
-const API_BASE_URL = "http://localhost:8282/api"; // Your API base URL
+const API_BASE_URL = "https://task-management-system-oeph.onrender.com/api"; // Your API base URL
 
 // FloatingInput Component
 const FloatingInput = ({ id, label, type = "text", value, onChange, toggleVisibility }) => (

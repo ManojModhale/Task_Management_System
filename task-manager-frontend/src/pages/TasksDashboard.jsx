@@ -9,7 +9,7 @@ import Notification from "../components/Notification"; // Assuming this path
 import '../styles/TasksDashboard.css'; // New CSS file
 import { AuthContext } from '../context/AuthContext';
 
-const API_BASE_URL = "http://localhost:8282/api"; // Your API base URL
+const API_BASE_URL = "https://task-management-system-oeph.onrender.com/api"; // Your API base URL
 
 const TasksDashboard = () => {
     const { authState, logout } = useContext(AuthContext);
