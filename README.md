@@ -53,6 +53,12 @@ The frontend of Task_Management_System is built using ReactJS, ensuring a seamle
 4.  **HTTP Requests**:
     * Axios for seamless interaction with backend APIs.
 
+5.  **Task Management**:
+    * **Dashboard View**: Display all tasks in a clear, tabular format.
+    * **Add Task**: Form to create new tasks.
+    * **Edit Task**: Functionality to modify existing task details.
+    * **Delete Task**: Option to remove tasks.
+
 **Technologies and Tools**:
 * ReactJS
 * Axios for HTTP requests
@@ -69,17 +75,26 @@ The backend of Task_Management_System is developed using Spring Boot, providing 
 ## Architecture and Flow:
 
 1.  **Request Flow**:
-    * The frontend sends HTTP requests to the controller layer.
-    * The service layer implements core business logic.
-    * The repository layer interacts with the database using JPA for data persistence.
-    * DTO Class Objects are returned as Responses.
-    * Responses are returned to the frontend via REST APIs.
+    * The frontend sends HTTP requests to the **Controller Layer**.
+    * The **Controller Layer** processes requests and delegates business logic to the **Service Layer**.
+    * The **Service Layer** implements core business logic and interacts with the **Repository Layer**.
+    * The **Repository Layer** (JPA repositories) handles database operations.
+    * Data Transfer Objects (DTOs) are used for request/response payloads to ensure data consistency and reduce exposure of internal models.
+    * Responses (often as DTOs) are returned to the frontend via REST APIs.
 
-2.  **User and Task Management**:
-    * Handles CRUD operations for users and tasks.
+2.  **Layered Architecture**:
+    * **Controller**: Handles incoming HTTP requests and prepares responses.
+    * **Service**: Contains the core business logic.
+    * **Repository**: Interfaces for data access operations.
+    * **Model (Entity)**: Represents the database schema.
+    * **DTO**: Data Transfer Objects for API communication.
 
 3.  **Database Integration**:
     * PostgreSQL database with Spring Data JPA for efficient ORM.
+
+4.  **User and Task Management**:
+    * Handles CRUD operations for users and tasks.
+      
 
 **Key Features**:
 * **Layered Architecture**: Ensures separation of concerns between controllers, services, Repository, and DTOs.
@@ -123,7 +138,7 @@ Before starting, ensure you have the following installed:
 ### Technologies Used
 
 #### Frontend
--   **React.js**: Component-based framework for building the user interface.
+-   **ReactJs**: Component-based framework for building the user interface.
 -   **React-Bootstrap**: Used for responsive components and styling.
 -   **CSS**: Custom styling for components and pages, leveraging media queries for responsiveness.
 -   **Axios**: For seamless HTTP requests to the backend.
@@ -148,15 +163,16 @@ Before starting, ensure you have the following installed:
 
 1.  **Clone the repository (backend part):**
     ```bash
-    git clone [https://github.com/your-username/task-management-backend.git](https://github.com/your-username/task-management-backend.git)
-    cd task-management-backend
+    git clone https://github.com/ManojModhale/Task_Management_System.git
+    cd task-manager-backend-postgresql
     ```
-    (Replace `your-username/task-management-backend.git` with your actual backend repository URL)
 
 2.  **Configure the database:**
     * Create a PostgreSQL database named `task_management`.
-    * Update the database connection details in `src/main/resources/application.properties` (or `application.yml`):
+    * Update the database connection details in `src/main/resources/application.properties`:
         ```properties
+        server.port=8282
+        
         spring.datasource.url=jdbc:postgresql://localhost:5432/task_management
         spring.datasource.username=your-pg-username
         spring.datasource.password=your-pg-password
@@ -174,16 +190,15 @@ Before starting, ensure you have the following installed:
     ```bash
     mvn spring-boot:run
     ```
-    The backend will typically be accessible at `http://localhost:8080` (or `8181` if configured as such).
+    The backend will typically be accessible at `http://localhost:8282`.
 
 #### 2. Setup Frontend (ReactJS)
 
 1.  **Clone the repository (frontend part):**
     ```bash
-    git clone [https://github.com/your-username/task-management-frontend.git](https://github.com/your-username/task-management-frontend.git)
-    cd task-management-frontend
+    git clone https://github.com/ManojModhale/Task_Management_System.git
+    cd task-manager-frontend
     ```
-    (Replace `your-username/task-management-frontend.git` with your actual frontend repository URL)
 
 2.  **Install the dependencies:**
     ```bash
@@ -251,6 +266,9 @@ Task_Management_System/
 │   ├── mvnw.cmd
 │   └── pom.xml
 ├── task-manager-frontend/     # Frontend Code
+│   ├── build/                	  # build files
+│   │   ├── static/
+│   │   ├── asset-manifest.json             	  
 │   ├── public/                	  # Static files
 │   │   ├── index.html              	  # Main HTML file
 │   ├── src/                   	  
@@ -290,18 +308,17 @@ Task_Management_System/
 ---
 ## Folder Description
 
--   **task-management-frontend/public/assets/**: Contains static files such as images.
+-   **task-management-frontend/public/**: Contains static files such as images.
 -   **task-management-frontend/src/components/**: Contains reusable functional components used across different pages.
--   **task-management-frontend/src/pages/**: Houses page-specific components like Login, Register, Dashboard, etc.
--   **task-management-frontend/src/api/**: Contains Axios configurations and functions for interacting with the backend API.
+-   **task-management-frontend/src/pages/**: Houses page-specific components like Auth, Home, Dashboard, etc.
 -   **task-management-frontend/src/context/**: Holds React Context API implementations for global state management (e.g., authentication status).
 -   **task-management-frontend/src/styles/**: Contains all CSS files, including global styles and component-specific styles.
--   **task-management-backend/src/main/java/com/taskmanagement/backend/config/**: Contains configuration for security and CORS.
--   **task-management-backend/src/main/java/com/taskmanagement/backend/controller/**: Defines the REST API endpoints.
--   **task-management-backend/src/main/java/com/taskmanagement/backend/service/**: Implements the core business logic.
--   **task-management-backend/src/main/java/com/taskmanagement/backend/repository/**: Provides interfaces for database access using Spring Data JPA.
--   **task-management-backend/src/main/java/com/taskmanagement/backend/dto/**: Data Transfer Objects for efficient data exchange between layers.
--   **task-management-backend/src/main/java/com/taskmanagement/backend/model/**: JPA entities representing the database tables.
+-   **task-management-backend-postgresql/src/main/java/com/taskmanager/backend/config/**: Contains configuration for security and CORS.
+-   **task-management-backend-postgresql/src/main/java/com/taskmanager/backend/controller/**: Defines the REST API endpoints.
+-   **task-management-backend-postgresql/src/main/java/com/taskmanager/backend/service/**: Implements the core business logic.
+-   **task-management-backend-postgresql/src/main/java/com/taskmanager/backend/repository/**: Provides interfaces for database access using Spring Data JPA.
+-   **task-management-backend-postgresql/src/main/java/com/taskmanager/backend/dto/**: Data Transfer Objects for efficient data exchange between layers.
+-   **task-management-backend-postgresql/src/main/java/com/taskmanager/backend/entity/**: JPA entities representing the database tables.
 
 ---
 
@@ -309,14 +326,14 @@ Task_Management_System/
 
 The ReactJS frontend communicates with the Spring Boot backend using `Axios`. All HTTP requests (GET, POST, PUT, DELETE) for user authentication, user data, and task management are directed to the backend API.
 
-**Example API Endpoints**
+**REST API Endpoints**
 
 -   `POST /api/auth/register`: Register a new user.
--   `POST /api/auth/login`: Authenticate a user and return a token.
--   `GET /api/tasks`: Retrieve all tasks for the logged-in user.
--   `POST /api/tasks`: Add a new task.
--   `PUT /api/tasks/{id}`: Update an existing task.
--   `DELETE /api/tasks/{id}`: Delete a task.
+-   `POST /api/auth/login`: Authenticate a user.
+-   `GET /api/task/allTasks/{username}`: Retrieve all tasks for the logged-in user.
+-   `POST /api/task/add-Task/{username}`: Add a new task.
+-   `PUT /api/task/update-Task/{id}/{username}`: Update an existing task.
+-   `DELETE /api/task/delete-Task/{id}/{username}`: Delete a task.
 
 **CORS Configuration (Backend)**
 
@@ -330,233 +347,6 @@ Ensure that CORS is enabled in the Spring Boot backend to allow communication be
 -   Add task categorization and filtering options.
 -   Implement task due dates and reminders.
 -   User profile management features.
-
----
-
-## Contact
-
-Maintainer: [Your Name]
-
--   GitHub: [Your GitHub Profile URL]
--   Email: [Your Email Address]
-
----
-
-**2) README.md (in frontend directory)**
-
-```markdown
-# TaskTrack System Frontend
-
-## Overview
-
-**TaskTrack System Frontend** is a React.js-based application designed to streamline personal task management. The platform is fully responsive, user-friendly, and integrates seamlessly with the backend REST API to deliver a smooth and efficient user experience.
-
-This project incorporates modern technologies like React Bootstrap for styling, React Router for navigation, and Axios for API communication. The system focuses on providing core task management functionalities to individual users.
-
-## Features
-
-1.  **User Authentication**:
-    * Secure user registration and login forms.
-    * Redirection to dashboard upon successful login.
-
-2.  **Task Management**:
-    * **Dashboard View**: Display all tasks in a clear, tabular format.
-    * **Add Task**: Form to create new tasks.
-    * **Edit Task**: Functionality to modify existing task details.
-    * **Delete Task**: Option to remove tasks.
-
-3.  **Navigation**:
-    * Clear routing for login, registration, dashboard, and task-specific pages.
-    * Logout feature redirects to the homepage.
-
-4.  **UI/UX**:
-    * Responsive design using React Bootstrap and custom media queries for optimal display on various devices.
-    * Intuitive forms with input validation.
-
-### Technologies and Tools
-
-* **ReactJS**: Frontend JavaScript library for building user interfaces.
-* **React Router DOM**: For declarative routing in React applications.
-* **React Bootstrap**: Frontend framework for responsive and modern UI components.
-* **Axios**: Promise-based HTTP client for making API requests.
-* **VS Code**: Integrated Development Environment.
-* **Git and GitHub**: Version control.
-
----
-
----
-
-## Installation and Setup
-
-### Prerequisites
-
-* Node.js (LTS version recommended)
-* npm (comes with Node.js)
-
-### Steps to Run
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/your-username/task-management-frontend.git
-    cd task-management-frontend
-    ```
-    (Replace `your-username/task-management-frontend.git` with your actual frontend repository URL)
-
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-
-3.  **Configure Environment Variables (Optional but Recommended):**
-    Create a `.env` file in the root of the frontend directory and add your backend API URL:
-    ```
-    REACT_APP_BACKEND_URL=http://localhost:8080
-    ```
-    (Adjust the URL if your backend runs on a different port or is deployed elsewhere.)
-
-4.  **Start the development server:**
-    ```bash
-    npm start
-    ```
-    The application will open in your browser at `http://localhost:3000`. Ensure your backend server is running to allow API communication.
-
----
-
-## Backend Communication
-
-The frontend interacts with the Spring Boot backend through RESTful APIs using `Axios`. The API calls handle user authentication (login, registration) and all CRUD operations for tasks.
-
----
-
-## Contact
-
-Maintainer: [Your Name]
-
--   GitHub: [Your GitHub Profile URL]
--   Email: [Your Email Address]
-3) README.md (in backend directory)
-
-Markdown
-
-# TaskTrack System Backend
-
-## Overview
-
-**TaskTrack** is a robust, secure, and feature-rich application developed using Spring Boot, aimed at simplifying personal task management. This backend provides seamless integration with a PostgreSQL database, secure authentication mechanisms, and RESTful APIs for efficient communication with the frontend.
-
-As a Full Stack Developer, I took charge of all major roles, including frontend and backend development, ensuring a client-centric approach while maintaining a balance between design and functionality. The application follows a layered architecture comprising controllers, services, repository, and models at the backend to ensure modularity, scalability, and maintainability.
-
-## Features
-
-1.  **User Authentication**:
-    * Secure user registration.
-    * User login with password encryption.
-
-2.  **Task Management**:
-    * CRUD (Create, Read, Update, Delete) operations for tasks.
-    * Tasks are associated with individual users.
-
-3.  **Data Persistence**:
-    * Integrates with PostgreSQL database using Spring Data JPA for efficient ORM.
-
-### Technologies and Tools
-
-* **Spring Boot**: Framework for rapidly building robust, production-ready Spring applications.
-* **Java**: Core programming language.
-* **Spring Data JPA**: Simplifies data access and persistence with JPA and Hibernate.
-* **PostgreSQL**: Relational database.
-* **Maven**: Build automation tool and dependency management.
-* **Spring Tool Suite (STS) 4**: Integrated Development Environment.
-* **Git and GitHub**: Version control.
-
----
-
-## Architecture and Flow:
-
-1.  **Request Flow**:
-    * The frontend sends HTTP requests to the **Controller Layer**.
-    * The **Controller Layer** processes requests and delegates business logic to the **Service Layer**.
-    * The **Service Layer** implements core business logic and interacts with the **Repository Layer**.
-    * The **Repository Layer** (JPA repositories) handles database operations.
-    * Data Transfer Objects (DTOs) are used for request/response payloads to ensure data consistency and reduce exposure of internal models.
-    * Responses (often as DTOs) are returned to the frontend via REST APIs.
-
-2.  **Layered Architecture**:
-    * **Controller**: Handles incoming HTTP requests and prepares responses.
-    * **Service**: Contains the core business logic.
-    * **Repository**: Interfaces for data access operations.
-    * **Model (Entity)**: Represents the database schema.
-    * **DTO**: Data Transfer Objects for API communication.
-
----
-
----
-
-## REST API Endpoints
-
-### Authentication
-* **POST /api/auth/register**: Register a new user.
-    * Request Body: `{ username, email, password, confirmPassword }`
-    * Response: User registration status.
-* **POST /api/auth/login**: Authenticate a user.
-    * Request Body: `{ email, password }`
-    * Response: Authentication token (e.g., JWT) and user details.
-
-### Tasks
-* **GET /api/tasks**: Retrieve all tasks for the authenticated user.
-    * Response: List of task objects.
-* **POST /api/tasks**: Add a new task.
-    * Request Body: `{ title, description, dueDate, status }` (example fields)
-    * Response: Created task object.
-* **PUT /api/tasks/{id}**: Update an existing task.
-    * URL Parameter: `id` (ID of the task to update)
-    * Request Body: `{ title, description, dueDate, status }` (updated fields)
-    * Response: Updated task object.
-* **DELETE /api/tasks/{id}**: Delete a task.
-    * URL Parameter: `id` (ID of the task to delete)
-    * Response: Confirmation message or status.
-
----
-
-## Installation and Setup
-
-### Prerequisites
-
-* Java Development Kit (JDK 17 or higher)
-* Apache Maven
-* PostgreSQL database server
-
-### Steps to Set Up the Backend
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/your-username/task-management-backend.git
-    cd task-management-backend
-    ```
-    (Replace `your-username/task-management-backend.git` with your actual backend repository URL)
-
-2.  **Configure the database:**
-    * Create a PostgreSQL database (e.g., `task_management`).
-    * Update the database connection details in `src/main/resources/application.properties` (or `application.yml`):
-        ```properties
-        spring.datasource.url=jdbc:postgresql://localhost:5432/task_management
-        spring.datasource.username=your-pg-username
-        spring.datasource.password=your-pg-password
-        spring.jpa.hibernate.ddl-auto=update
-        spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
-        ```
-        (Replace `your-pg-username` and `your-pg-password` with your PostgreSQL credentials)
-
-3.  **Build the project:**
-    ```bash
-    mvn clean install
-    ```
-
-4.  **Run the application:**
-    ```bash
-    mvn spring-boot:run
-    ```
-    The backend server will typically start on port `8080` (or the port specified in `application.properties`).
 
 ---
 
