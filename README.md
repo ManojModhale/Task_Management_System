@@ -9,14 +9,14 @@ This project follows a layered architecture and ensures modularity, scalability,
 ## Deployment
 This full-stack **Task_Management_System** project has been successfully deployed using the **Render** platform.
 
-   *Frontend (ReactJS Web Service):
-      *Link: https://task-management-system-app.onrender.com/
+   * Frontend (ReactJS Web Service):
+      * Link: https://task-management-system-app.onrender.com/
    
-   *Backend (Spring Boot Web Service with Docker):
-      *Link: https://task-management-system-oeph.onrender.com/
+   * Backend (Spring Boot Web Service with Docker):
+      * Link: https://task-management-system-oeph.onrender.com/
       
-   *Database (PostgreSQL):
-      *The PostgreSQL database is also hosted on Render, utilizing its internal database service.
+   * Database (PostgreSQL):
+      * The PostgreSQL database is also hosted on Render, utilizing its internal database service.
 
 ## Features
 
