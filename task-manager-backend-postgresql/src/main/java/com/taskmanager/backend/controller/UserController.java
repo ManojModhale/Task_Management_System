@@ -15,7 +15,7 @@ import com.taskmanager.backend.service.AuthService;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://task-management-system-app.onrender.com")
 public class UserController {
 	
 	@Autowired
